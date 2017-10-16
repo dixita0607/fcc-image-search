@@ -1,8 +1,13 @@
 const express = require('express');
 const app = express();
 const request = require('request');
+const path = require('path');
 
 const recent = [];
+
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'index.html'));
+});
 
 app.get(['/search', '/search/:term'], (req, res) => {
   const term = req.params.term || 'cat';
